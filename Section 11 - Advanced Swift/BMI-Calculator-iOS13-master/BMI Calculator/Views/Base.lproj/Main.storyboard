@@ -208,6 +208,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="adviceLabel" destination="9IV-CT-mxw" id="jfs-fX-LE5"/>
+                        <outlet property="resultBackground" destination="r83-N3-Ash" id="A7D-sE-afA"/>
                         <outlet property="resultLabel" destination="VU9-2W-Sd5" id="EAa-Lt-xou"/>
                     </connections>
                 </viewController>
