@@ -8,17 +8,19 @@
 
 import UIKit
 
-class WeatherViewController: UIViewController, UITextFieldDelegate {
+class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherManagerDelegate {
 
     @IBOutlet weak var conditionImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var searchTextField: UITextField!
     
+    var weatherManager = WeatherManager();
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        self.weatherManager.delegate = self;
         self.searchTextField.delegate = self;
     }
     
@@ -37,6 +39,11 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
     
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        if let city = self.searchTextField.text {
+            self.weatherManager.fetchWeather(city: city);
+            self.cityLabel.text = city;
+        }
+        
         self.searchTextField.text = "";
     }
     
@@ -47,6 +54,14 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
             textField.placeholder = "Type Something";
             return false;
         }
+    }
+    
+    func didUpdateWeather(weather: WeatherModel) {
+        DispatchQueue.main.async {
+            self.temperatureLabel.text = weather.temperatureString;
+            self.cityLabel.text = weather.cityName;
+        }
+        
     }
 }
 
