@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Timeline
+   version = "3.0">
+   <TimelineItems>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/miguelsolans/Documents/Git/swift-course/Section%2013%20-%20Networking,%20JSON%20Parsing,%20APIs%20and%20Core%20Location/Extensions/UserInterfacing.playground#CharacterRangeLen=6&amp;CharacterRangeLoc=90&amp;EndingColumnNumber=7&amp;EndingLineNumber=5&amp;StartingColumnNumber=1&amp;StartingLineNumber=5&amp;Timestamp=657304471.480491"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/miguelsolans/Documents/Git/swift-course/Section%2013%20-%20Networking,%20JSON%20Parsing,%20APIs%20and%20Core%20Location/Extensions/UserInterfacing.playground#CharacterRangeLen=29&amp;CharacterRangeLoc=151&amp;EndingColumnNumber=28&amp;EndingLineNumber=7&amp;StartingColumnNumber=31&amp;StartingLineNumber=6&amp;Timestamp=657304471.4806499"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/miguelsolans/Documents/Git/swift-course/Section%2013%20-%20Networking,%20JSON%20Parsing,%20APIs%20and%20Core%20Location/Extensions/UserInterfacing.playground#CharacterRangeLen=9&amp;CharacterRangeLoc=512&amp;EndingColumnNumber=10&amp;EndingLineNumber=22&amp;StartingColumnNumber=1&amp;StartingLineNumber=22&amp;Timestamp=657304471.48076"
+         lockedSize = "{175, 50}"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/miguelsolans/Documents/Git/swift-course/Section%2013%20-%20Networking,%20JSON%20Parsing,%20APIs%20and%20Core%20Location/Extensions/UserInterfacing.playground#CharacterRangeLen=6&amp;CharacterRangeLoc=153&amp;EndingColumnNumber=7&amp;EndingLineNumber=7&amp;StartingColumnNumber=1&amp;StartingLineNumber=7&amp;Timestamp=657304471.480868"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+   </TimelineItems>
+</Timeline>

@@ -14,18 +14,32 @@ import Foundation
 
 protocol WeatherManagerDelegate {
     func didUpdateWeather(weather: WeatherModel)
+    func didFailWithError(error: Error);
 }
 
 struct WeatherManager {
-    let urlString = "https://api.openweathermap.org/data/2.5/weather?q=%@&appid=0aa503a3c69735aa410fae6c16f76a7e";
+    let urlStringByCity = "https://api.openweathermap.org/data/2.5/weather?q=%@&appid=%@&units=metric";
+    let urlStringByCoordinates = "https://api.openweathermap.org/data/2.5/weather?appid=%@&units=metric&lat=%@&lon=%@"
     var delegate : WeatherManagerDelegate?;
-    func fetchWeather(city: String) {
-        let urlString = String(format: urlString, city);
+    func fetchWeatherBy(city: String) {
         
-        performRequest(urlString: urlString);
+        let urlString = String(format: urlStringByCity, city, self.getApiKey());
+        
+        performRequest(with: urlString);
+        
     }
     
-    func performRequest(urlString: String) {
+    func fetchWeatherBy(lat: String, long: String) {
+        let urlString = String(format: urlStringByCoordinates, self.getApiKey(), lat, long);
+        
+        performRequest(with: urlString);
+    }
+    
+    func getApiKey() -> String {
+        return String(ProcessInfo.processInfo.environment["api_key"] ?? "none");
+    }
+    
+    func performRequest(with urlString: String) {
         if let url = URL(string: urlString) {
             
             let session = URLSession(configuration: .default);
@@ -33,6 +47,8 @@ struct WeatherManager {
             let task = session.dataTask(with: url) { (data, response, error) in
                 if error != nil {
                     print(error!);
+                    
+                    self.delegate?.didFailWithError(error: error!);
                     return;
                 }
                 

@@ -19,7 +19,7 @@ struct WeatherModel {
     }
     
     var temperatureString: String {
-        String(format: "%.1f", self.temperature);
+        return String(format: "%.1f", self.temperature);
     }
     
     func getConditionName() -> String {
