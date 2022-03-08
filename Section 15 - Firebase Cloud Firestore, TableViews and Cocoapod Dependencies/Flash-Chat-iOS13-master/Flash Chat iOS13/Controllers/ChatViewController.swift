@@ -11,7 +11,7 @@ import FirebaseAuth
 import FirebaseFirestore
 
 class ChatViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageTextfield: UITextField!
     
@@ -39,27 +39,31 @@ class ChatViewController: UIViewController {
     }
     
     func loadMessages() -> Void {
-        messages = [];
         
-        db.collection(K.FStore.collectionName).getDocuments { (querySnapshot, error) in
-            if let e = error {
-                print("There was an issue retrieving data from Firestore. \(e)")
-            } else {
-                
-                if let safeDocuments = querySnapshot?.documents {
-                    for document in safeDocuments {
-                        let data = document.data()
-                        if let sender = data[ K.FStore.senderField ] as? String, let message = data[ K.FStore.bodyField ] as? String {
-                            self.messages.append(MessageModel(sender: sender, body: message))
-                            
-                            DispatchQueue.main.async {
-                                self.tableView.reloadData()
+        db.collection(K.FStore.collectionName)
+            .order(by: K.FStore.dateField)
+            .addSnapshotListener { (querySnapshot, error) in
+                self.messages = [];
+                if let e = error {
+                    print("There was an issue retrieving data from Firestore. \(e)")
+                } else {
+                    
+                    if let safeDocuments = querySnapshot?.documents {
+                        for document in safeDocuments {
+                            let data = document.data()
+                            if let sender = data[ K.FStore.senderField ] as? String, let message = data[ K.FStore.bodyField ] as? String {
+                                self.messages.append(MessageModel(sender: sender, body: message))
+                                
+                                DispatchQueue.main.async {
+                                    self.tableView.reloadData()
+                                    let indexPath = IndexPath(row: self.messages.count-1, section: 0)
+                                    self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
+                                }
                             }
                         }
                     }
                 }
             }
-        }
     }
     
     @IBAction func sendPressed(_ sender: UIButton) {
@@ -67,7 +71,7 @@ class ChatViewController: UIViewController {
         if let messageBody = self.messageTextfield.text, let messageSender = Auth.auth().currentUser?.email {
             
             db.collection(K.FStore.collectionName)
-                .addDocument(data: [K.FStore.senderField: messageSender, K.FStore.bodyField: messageBody]) { (error) in
+                .addDocument(data: [K.FStore.senderField: messageSender, K.FStore.bodyField: messageBody, K.FStore.dateField: Date().timeIntervalSince1970]) { (error) in
                     
                     if let e = error {
                         print("There was an issue saving data to firestore, \(e)")
@@ -104,6 +108,19 @@ extension ChatViewController: UITableViewDataSource {
         let message = self.messages[ indexPath.row ]
         
         cell.messageLabel.text = message.body
+        
+        
+        if(message.sender == Auth.auth().currentUser?.email) {
+            cell.youAvatarImage.isHidden = true;
+            cell.avatarImage.isHidden = false;
+            cell.messageBubble.backgroundColor = UIColor(named: K.BrandColors.lightPurple)
+            cell.messageLabel.textColor = UIColor(named: K.BrandColors.purple)
+        } else {
+            cell.youAvatarImage.isHidden = false;
+            cell.avatarImage.isHidden = true;
+            cell.messageBubble.backgroundColor = UIColor(named: K.BrandColors.purple)
+            cell.messageLabel.textColor = UIColor(named: K.BrandColors.lightPurple)
+        }
         
         return cell;
         
