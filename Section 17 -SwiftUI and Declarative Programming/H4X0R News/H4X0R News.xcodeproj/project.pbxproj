@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B5E04CD281015BC003C3290 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E04CC281015BC003C3290 /* DetailView.swift */; };
+		8B5E04CF28101824003C3290 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E04CE28101824003C3290 /* WebView.swift */; };
 		8B97A89127EE0EBF00C51850 /* H4X0R_NewsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B97A89027EE0EBF00C51850 /* H4X0R_NewsApp.swift */; };
 		8B97A89327EE0EBF00C51850 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B97A89227EE0EBF00C51850 /* ContentView.swift */; };
 		8B97A89527EE0EC400C51850 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B97A89427EE0EC400C51850 /* Assets.xcassets */; };
@@ -16,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B5E04CC281015BC003C3290 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		8B5E04CE28101824003C3290 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		8B5E04D02810195C003C3290 /* H4X0R News.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "H4X0R News.entitlements"; sourceTree = "<group>"; };
 		8B97A88D27EE0EBF00C51850 /* H4X0R News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "H4X0R News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B97A89027EE0EBF00C51850 /* H4X0R_NewsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H4X0R_NewsApp.swift; sourceTree = "<group>"; };
 		8B97A89227EE0EBF00C51850 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -36,6 +41,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B5E04CB281015A4003C3290 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8B97A89227EE0EBF00C51850 /* ContentView.swift */,
+				8B5E04CC281015BC003C3290 /* DetailView.swift */,
+				8B5E04CE28101824003C3290 /* WebView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		8B97A88427EE0EBF00C51850 = {
 			isa = PBXGroup;
 			children = (
@@ -55,9 +70,10 @@
 		8B97A88F27EE0EBF00C51850 /* H4X0R News */ = {
 			isa = PBXGroup;
 			children = (
+				8B5E04D02810195C003C3290 /* H4X0R News.entitlements */,
+				8B5E04CB281015A4003C3290 /* Views */,
 				8B97A89E27EE111400C51850 /* Models */,
 				8B97A89027EE0EBF00C51850 /* H4X0R_NewsApp.swift */,
-				8B97A89227EE0EBF00C51850 /* ContentView.swift */,
 				8B97A89427EE0EC400C51850 /* Assets.xcassets */,
 				8B97A89627EE0EC400C51850 /* Preview Content */,
 			);
@@ -154,6 +170,8 @@
 				8B97A8A027EE112900C51850 /* NetworkManager.swift in Sources */,
 				8B97A8A327EE129300C51850 /* PostData.swift in Sources */,
 				8B97A89327EE0EBF00C51850 /* ContentView.swift in Sources */,
+				8B5E04CF28101824003C3290 /* WebView.swift in Sources */,
+				8B5E04CD281015BC003C3290 /* DetailView.swift in Sources */,
 				8B97A89127EE0EBF00C51850 /* H4X0R_NewsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,6 +300,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "H4X0R News/H4X0R News.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"H4X0R News/Preview Content\"";
@@ -293,6 +312,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,6 +320,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.miguelsolans.H4X0R-News";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -311,6 +332,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "H4X0R News/H4X0R News.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"H4X0R News/Preview Content\"";
@@ -322,6 +344,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -329,6 +352,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.miguelsolans.H4X0R-News";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
