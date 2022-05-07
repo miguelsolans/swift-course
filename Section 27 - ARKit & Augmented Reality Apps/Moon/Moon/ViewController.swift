@@ -21,21 +21,16 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
-        
-        
-        self.addCube();
     
-        self.addSphere();
+        self.addMoon();
+        self.addEarth();
         
         // 3D requires light
         sceneView.autoenablesDefaultLighting = true;
         
-        
-        
-        
     }
     
-    func addSphere() {
+    func addMoon() {
         let sphere = SCNSphere(radius: 0.2);
         
         let material = SCNMaterial();
@@ -45,6 +40,21 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         let node = SCNNode();
         node.position = SCNVector3(x: 0, y: 0.1, z: -0.5);
+        node.geometry = sphere;
+        
+        sceneView.scene.rootNode.addChildNode(node);
+    }
+    
+    func addEarth() {
+        let sphere = SCNSphere(radius: 0.5);
+        
+        let material = SCNMaterial();
+        material.diffuse.contents = UIImage(named: "art.scnassets/8k_earth_daymap.jpg");
+        
+        sphere.materials = [material];
+        
+        let node = SCNNode();
+        node.position = SCNVector3(x: 1, y: 0.1, z: -0.9);
         node.geometry = sphere;
         
         sceneView.scene.rootNode.addChildNode(node);
